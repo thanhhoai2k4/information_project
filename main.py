@@ -1,42 +1,14 @@
-class LoadDdata:
-    def __init__(self, path):
-        self.path = path
-    def readData(self, mode='r'):
-        """
-            returned clean data.
-            argument:
-                + sentences: list [sentence_1, sentence_2, ...] where sentece_1 has formed "Hi i am Thanh Hoai. my eyes is very light."
-        """
-        with open(self.path, mode) as file:
-            data = file.readlines()
-            data = self.prepare(data)
-            return data
+from tools.loadData import LoadDdata
+from tools.Radix_Trees import RadixNode
+import 
 
-    def prepare(self,sentences):
-        """
-            return list of all different words.
+def init_Form():
 
-        """
-        array = []
-        for sentence in sentences:
-            for word in sentence.split():
-                a = self.removeSpecialChar(word, ['.'])
-                array.append(a.lower())
-        return list(set(array))
-    
-    def removeSpecialChar(self, word, specialCharList):
-        """
-            returned word after remove special Char.
-            argument:
-                + word : string. ex: hi, tensorflow,...
-                + special char list: list. ex: ['.', '@', '%']
-        """
-        result = []
-        for char in word:
-            if char not in specialCharList:
-                result.append(char)
-        return "".join(result)
-a = LoadDdata("data.txt")
-print(a.readData())
+    path =  r"E:\github\information_project\datasets\data.txt"
+    dataset = LoadDdata(path).data
+    root = RadixNode()
+    root.insert_many(dataset)
+    return root
+
 
 

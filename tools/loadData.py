@@ -7,7 +7,7 @@ class LoadDdata:
     def readData(self, mode='r'):
         """
             returned clean data.
-            argument:
+            arguments:
                 + sentences: list [sentence_1, sentence_2, ...] where sentece_1 has formed "Hi i am Thanh Hoai. my eyes is very light."
         """
         with open(self.path, mode) as file:
@@ -39,7 +39,3 @@ class LoadDdata:
             if char not in specialCharList:
                 result.append(char)
         return "".join(result)
-
-a = LoadDdata("data.txt")
-print(a.data)
-
