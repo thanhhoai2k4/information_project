@@ -132,11 +132,6 @@ def remove_duplicates(words):
             result.append(word)
             seen.add(word)
     return result
-import time                
-import os
-# Lấy pid của chương trình hiện tại
-pid = os.getpid()
-# Lấy đối tượng Process của chương trình
 
 
 root = Radix_Tree()
