@@ -133,14 +133,11 @@ def remove_duplicates(words):
             seen.add(word)
     return result
 import time                
-import psutil
 import os
 # Lấy pid của chương trình hiện tại
 pid = os.getpid()
 # Lấy đối tượng Process của chương trình
-process = psutil.Process(pid)
 
-start_time = time.time()
 
 root = Radix_Tree()
 string1 = """A teacher is someone who guides the path of knowledge for their students They are always patient dedicated and passionate about their work 
@@ -153,18 +150,11 @@ words = remove_duplicates(string1)
 root.insertManyWord(words)
 end_time = time.time()
 
-#tính thời gian chạy của thuật toán Python
-elapsed_time = end_time - start_time
-print ("elapsed_time:{0}".format(elapsed_time) + "[sec]")
 
 # pridct word in here
-# completeWord = root.predictWord("roman")
-# print(completeWord)
+completeWord = root.predictWord("roman")
+print(completeWord)
 
 # find word:
-# bool_word = root.findWord("improve")
-# print(bool_word)
-
-# Lấy bộ nhớ đang sử dụng của chương trình (in MB)
-memory_info = process.memory_info()
-print(f"Chương trình đang sử dụng {memory_info.rss / (1024 * 1024):.2f} MB bộ nhớ.")
+bool_word = root.findWord("improve")
+print(bool_word)
